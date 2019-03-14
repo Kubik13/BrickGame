@@ -29,9 +29,9 @@ var score = 0;
 var lives = 3;
 var playOn = true; // идет игра или нет
 
-var brickRowCount = 4;
+var brickRowCount = 6;
 var brickColumnCount = 7;
-var brickOffsetTop = 110;
+var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
 var brickPadding = 5;
 var brickWidth = ((g_canvas.width - brickOffsetLeft * 2 - brickPadding * (brickColumnCount-1)) / brickColumnCount);
@@ -88,6 +88,15 @@ function mouseMoveHandler(e) {
     }
 }
 
+function buttons(){
+	side_ctx.beginPath();
+	side_ctx.rect(10,460,80,30);
+	side_ctx.rect(10,420,80,30);
+	side_ctx.fillStyle = "grey";
+	side_ctx.fill();
+	side_ctx.closePath();
+}
+
 function collisionDetection() {
     for(var c=0; c<brickColumnCount; c++) {
         for(var r=0; r<brickRowCount; r++) {
@@ -123,16 +132,21 @@ function drawPaddle(){
 }
 
 function textInfo(){
-	ctx.font = '10px Arial';
-	ctx.fillStyle = 'black';
-	ctx.fillText('x - ' + Math.round(x), 20, 30);
-	ctx.fillText('y - ' + Math.round(y), 20, 40);
-	ctx.fillText('seconds - ' + (Math.round((endTime - startTime) / 1000)), 20,50); // миллисекунды проиденные с начала
-	ctx.fillText('right arrow - ' + rightPressed, 20, 60); 
-	ctx.fillText('left arrow - ' + leftPressed, 20, 70); 
+	//ctx.font = '10px Arial';
+	//ctx.fillStyle = 'black';
+	//ctx.fillText('x - ' + Math.round(x), 20, 30);
+	//ctx.fillText('y - ' + Math.round(y), 20, 40);
+	//ctx.fillText('seconds - ' + (Math.round((endTime - startTime) / 1000)), 20,50); // миллисекунды проиденные с начала
+	//ctx.fillText('right arrow - ' + rightPressed, 20, 60); 
+	//ctx.fillText('left arrow - ' + leftPressed, 20, 70); 
 	//ctx.fillText('up arrow - ' + upPressed, 20, 80); 
 	//ctx.fillText('down arrow - ' + downPressed, 20, 90); 
-	ctx.fillText('pad hits - ' + hitPad, 20, 100);
+	//ctx.fillText('pad hits - ' + hitPad, 20, 100);
+	var log = document.getElementById("log");
+	log.value = "x - " + Math.round(x) + "\n" + "y - " + Math.round(y) + "\n";
+	log.value += "seconds - " + Math.round((endTime - startTime) / 1000) + "\n";
+	log.value += "right arrow - " + rightPressed + "\n" + "left arrow - " + leftPressed + "\n";
+	log.value += "pad hits - " + hitPad + "\n";
 }
 
 function drawScoreLives(){
@@ -210,11 +224,11 @@ function draw() {
 	//}
 	endTime = new Date; 
 	textInfo();
-	drawScoreLives();
 	if (playOn == true) {requestAnimationFrame(draw)} // если игра идет запускается draw снова
 
+	drawScoreLives();
+	buttons();
 }
-
 
 draw();
 
