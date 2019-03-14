@@ -1,0 +1,15 @@
+* {background: #f1f1f1;}
+
+#game_canvas { position: absolute;
+ 	top: 20px;
+ 	left: 20px;
+ 	background: #fff;
+ 	box-shadow: 0 0 15px 10px rgba(200, 200, 200,.75);
+}
+  		
+#side_canvas { position: absolute;
+ 	top: 20px;
+ 	left: 530px;
+ 	background: #fff;
+	box-shadow: 0 0 15px 10px rgba(200, 200, 200,.75);
+}
