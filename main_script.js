@@ -5,10 +5,10 @@ var s_canvas = document.getElementById("side_canvas");
 var side_ctx = s_canvas.getContext("2d");
 
 
-var x = g_canvas.width / 4;
+var x = Math.random() * g_canvas.width;
 var y = g_canvas.height / 2;
 var ballRadius = 5; // радиус шарика
-var vectorX = 1; // направление по х
+var vectorX = Math.random() > 0.5 ? 1 : -1; // направление по х
 var vectorY = 1; // направление по y
 var speedX = 1.6; // смещение по х
 var speedY = 1.4; // смещение по y
@@ -64,6 +64,12 @@ function keyDownHandler(e) {
     else if(e.key == "Down" || e.key == "ArrowDown") {
         downPressed = true;
     }
+    else if(e.key == "P" || e.key == "p") {
+    	pause_game();
+    }
+    else if(e.key == "N"  || e.key == "n") {
+    	new_game();
+    }
 }
 
 function keyUpHandler(e) {
@@ -88,15 +94,6 @@ function mouseMoveHandler(e) {
     }
 }
 
-function buttons(){
-	side_ctx.beginPath();
-	side_ctx.rect(10,460,80,30);
-	side_ctx.rect(10,420,80,30);
-	side_ctx.fillStyle = "grey";
-	side_ctx.fill();
-	side_ctx.closePath();
-}
-
 function collisionDetection() {
     for(var c=0; c<brickColumnCount; c++) {
         for(var r=0; r<brickRowCount; r++) {
@@ -118,8 +115,8 @@ function collisionDetection() {
 function drawBall(){
 	ctx.beginPath();
 	ctx.arc(x, y, ballRadius, 0, Math.PI*2, false);
-	ctx.strokeStyle = 'blue';
-	ctx.stroke();
+	ctx.fillStyle = 'blue';
+	ctx.fill();
 	ctx.closePath();
 }
 
@@ -147,6 +144,7 @@ function textInfo(){
 	log.value += "seconds - " + Math.round((endTime - startTime) / 1000) + "\n";
 	log.value += "right arrow - " + rightPressed + "\n" + "left arrow - " + leftPressed + "\n";
 	log.value += "pad hits - " + hitPad + "\n";
+	log.value += "playOn - " + playOn;
 }
 
 function drawScoreLives(){
@@ -175,12 +173,26 @@ function drawBricks() {
     }
 }
 
+function pause_game(){ //из html при клике на кнопку вызывается
+	if (playOn == true) {playOn = false}
+	else if (lives > -1) {
+		playOn = true;
+		draw();
+	}
+}
+
+function new_game(){
+
+	document.location.reload();
+}
+
 function draw() {
 	ctx.clearRect(0, 0, g_canvas.width, g_canvas.height);
 	drawBricks();
 	drawBall();
 	drawPaddle();
 	collisionDetection();
+	drawScoreLives();
 
 	if ((x > g_canvas.width - ballRadius) || (x < ballRadius)) {vectorX = -vectorX}
 	if (y < ballRadius) {vectorY = -vectorY}
@@ -225,9 +237,6 @@ function draw() {
 	endTime = new Date; 
 	textInfo();
 	if (playOn == true) {requestAnimationFrame(draw)} // если игра идет запускается draw снова
-
-	drawScoreLives();
-	buttons();
 }
 
 draw();

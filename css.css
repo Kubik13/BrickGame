@@ -18,5 +18,18 @@
 	top: 550px;
 	left: 20px;
 	height: 100px;
+}
 
+#pause_button { position: absolute;
+	top: 550px;
+	left: 200px;
+	width: 80px;
+	height: 30px;
+}
+
+#new_game_button { position: absolute;
+	top: 550px;
+	left: 300px;
+	width: 80px;
+	height: 30px;
 }
