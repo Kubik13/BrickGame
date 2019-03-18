@@ -17,7 +17,9 @@
 #log { position: absolute;
 	top: 550px;
 	left: 20px;
-	height: 100px;
+	height: 110px;
+	resize: none;
+	outline: none;
 }
 
 #pause_button { position: absolute;
@@ -25,6 +27,7 @@
 	left: 200px;
 	width: 80px;
 	height: 30px;
+	outline: none;
 }
 
 #new_game_button { position: absolute;
@@ -32,4 +35,17 @@
 	left: 300px;
 	width: 80px;
 	height: 30px;
+	outline: none;
+}
+
+.gamebutton {position: absolute;
+	overflow: hidden;
+	width: 80px;
+	height: 30px;
+}
+.button_img {
+	transition: 0.3s;
+}
+.button_img:hover {
+	transform: scale(1.2);
 }

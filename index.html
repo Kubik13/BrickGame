@@ -10,8 +10,15 @@
 	<canvas id="game_canvas" width="500" height="500"></canvas>
 	<canvas id="side_canvas" width="100" height="500" ></canvas>
 	<textarea id="log"></textarea>
-	<button id="pause_button" onclick="pause_game()"><u>P</u>ause</button>
-	<button id="new_game_button" onclick="new_game()"><u>N</u>ew Game</button>
+
+	<div class="gamebutton" style= "position: absolute; top:650px; left:300px">
+		<img class="button_img" src="pause_button.png" onclick="pause_game()">
+	</div>
+
+	<div class="gamebutton" style= "position: absolute; top:650px; left:200px">
+		<img class = "button_img" src="newgame_button.png" onclick="new_game()">
+	</div>
+
 
 	<script src="main_script.js"></script>
 
