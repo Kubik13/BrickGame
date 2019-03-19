@@ -22,22 +22,6 @@
 	outline: none;
 }
 
-#pause_button { position: absolute;
-	top: 550px;
-	left: 200px;
-	width: 80px;
-	height: 30px;
-	outline: none;
-}
-
-#new_game_button { position: absolute;
-	top: 550px;
-	left: 300px;
-	width: 80px;
-	height: 30px;
-	outline: none;
-}
-
 .gamebutton {position: absolute;
 	overflow: hidden;
 	width: 80px;
@@ -49,3 +33,16 @@
 .button_img:hover {
 	transform: scale(1.2);
 }
+
+.star {position: absolute;
+	overflow: hidden;
+	top: 600px;
+	left: 250px;
+}
+.star_img {
+	transition: 2s;
+}
+.star_img:hover{
+	transform: rotate(360deg);
+}
+
