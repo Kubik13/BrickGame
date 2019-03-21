@@ -1,0 +1,56 @@
+* {background: #f1f1f1;}
+
+#game_canvas { position: absolute;
+ 	top: 20px;
+ 	left: 20px;
+ 	background: #fff;
+ 	box-shadow: 0 0 15px 10px rgba(200, 200, 200,.75);
+}
+  		
+#side_canvas { position: absolute;
+ 	top: 20px;
+ 	left: 530px;
+ 	background: #fff;
+	box-shadow: 0 0 15px 10px rgba(200, 200, 200,.75);
+}
+
+#log { position: absolute;
+	top: 550px;
+	left: 20px;
+	height: 55px;
+	width: 300px;
+	resize: none;
+	outline: none;
+}
+
+.scorelives{
+	background-color: transparent;
+	overflow: hidden;
+	font: 20px "Arial";
+	color: blue;
+}
+
+.gamebutton {position: absolute;
+	overflow: hidden;
+	width: 80px;
+	height: 30px;
+}
+.button_img {
+	transition: 0.3s;
+}
+.button_img:hover {
+	transform: scale(1.2);
+}
+
+.star {position: absolute;
+	overflow: hidden;
+	top: 420px;
+	left: 530px;
+}
+.star_img {
+	transition: 2s;
+}
+.star_img:hover{
+	transform: rotate(360deg);
+}
+
