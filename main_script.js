@@ -1,10 +1,6 @@
 var g_canvas = document.getElementById("game_canvas");
 var ctx = g_canvas.getContext("2d");
 
-var s_canvas = document.getElementById("side_canvas");
-var side_ctx = s_canvas.getContext("2d");
-
-
 var x = Math.random() * g_canvas.width;
 var y = g_canvas.height / 2;
 var ballRadius = 5; // радиус шарика
@@ -135,19 +131,18 @@ function drawPaddle(){
 function textInfo(){
 	var log = document.getElementById("log");
 	log.value = "x - " + Math.round(x) + "\n" + "y - " + Math.round(y) + "\n";
-	log.value += "seconds - " + Math.round((endTime - startTime) / 1000) + "\n";
-	log.value += "right arrow - " + rightPressed + "\n" + "left arrow - " + leftPressed + "\n";
-	log.value += "pad hits - " + hitPad + "\n";
-	log.value += "playOn - " + playOn +"\n";
+	log.value += "seconds - " + Math.round((endTime - startTime) / 1000) + "     ";
+	log.value += "right arrow - " + rightPressed + "     " + "left arrow - " + leftPressed + "\n";
+	log.value += "pad hits - " + hitPad + "      ";
+	log.value += "playOn - " + playOn +"     ";
 	log.value += mouseX + " - " + mouseY;
 }
 
 function drawScoreLives(){
-	side_ctx.clearRect(0, 0, s_canvas.width, s_canvas.height);
-	side_ctx.font = '20px Arial';
-	side_ctx.fillStyle = 'blue'
-	side_ctx.fillText ('score: ' + score, 10,30);
-	side_ctx.fillText ('lives: ' + lives, 10,70);
+	var scoreHTML = document.getElementById("score");
+	scoreHTML.textContent = "Score: " + score;
+    document.getElementById("lives").textContent = "Lives: " + lives;
+
 }
 
 function drawBricks() {
